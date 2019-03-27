@@ -1,5 +1,10 @@
-﻿using App.Metrics;
+﻿using System.Collections.Generic;
+using System.Linq;
+using App.Metrics;
+using App.Metrics.Formatters.Json;
+using App.Metrics.Formatters.Prometheus;
 using App.Metrics.Health;
+using App.Metrics.Health.Builder;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -27,22 +32,15 @@ namespace SimpleMVC
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            
-            //var metrics = AppMetrics.CreateDefaultBuilder().Build();
-            
+                        
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddMetrics();
-            services.AddMetricsTrackingMiddleware();
-            services.AddMetricsEndpoints();
             
             
-            var metrics = AppMetricsHealth.CreateDefaultBuilder()
-                .HealthChecks.RegisterFromAssembly(services)
-                .BuildAndAddTo(services);
-
-            services.AddHealth(metrics);
-            services.AddHealthEndpoints();
+            
+            var healthBuilder = new HealthBuilder();
+            healthBuilder.HealthChecks.AddCheck(new SampleHealthCheck());
+            services.AddHealth(healthBuilder);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,10 +60,8 @@ namespace SimpleMVC
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-            
-            app.UseMetricsAllMiddleware();
-            app.UseMetricsAllEndpoints();
-            app.UseHealthAllEndpoints();
+
+            //app.UseHealthChecks("/health");
 
             app.UseMvc(routes =>
             {
@@ -73,6 +69,8 @@ namespace SimpleMVC
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            
+            
         }
     }
 }

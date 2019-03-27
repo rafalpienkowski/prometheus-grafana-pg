@@ -1,6 +1,6 @@
-﻿using App.Metrics.AspNetCore;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using SimpleMVC.Metrics.Extensions;
 
 namespace SimpleMVC
 {
@@ -13,11 +13,8 @@ namespace SimpleMVC
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseMetricsWebTracking()
-                .UseMetricsEndpoints()
-                //.UseHealth()
-                .UseHealthEndpoints()
-                .UseMetrics()
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .UseAppMetrics();
+
     }
 }

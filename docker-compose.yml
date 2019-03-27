@@ -4,18 +4,18 @@ version: '3'
 volumes:
   prometheus_data: {}
   grafana_data: {}
+  influxdb_data: {}
 
 networks:
   front-tier:
   back-tier:
 
-
 services:
   simple-mvc:
     build: ./SimpleMVC/.
     ports:
-     - "5000:80"
-     - "5001:443"
+     - "80:80"
+     - "443:443"
     networks:
       - front-tier
       - back-tier
@@ -39,16 +39,40 @@ services:
       - back-tier
     restart: always
 
+  influxdb:
+    image: influxdb:alpine
+    ports:
+      - 8086:8086
+    networks:
+      - back-tier
+    volumes:
+      - influxdb_data:/var/lib/influxdb
+
+  blackbox-exporter:
+    image: prom/blackbox-exporter
+    ports:
+      - 9115:9115
+    volumes:
+      - "./blackbox:/config"
+    command: 
+      - '--config.file=/config/blackbox.yml'
+    networks:
+      - back-tier
+    depends_on:
+      - prometheus
+
   grafana:
     image: grafana/grafana:6.0.1
     user: "472"
     depends_on:
-      - prometheus
+      - influxdb
     ports:
       - 3000:3000
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/provisioning/:/etc/grafana/provisioning/
+    environment:
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource,vonage-status-panel,grafana-piechart-panel
     networks:
       - back-tier
     restart: always
