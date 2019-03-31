@@ -5,24 +5,6 @@
     <e p="$USER_HOME$/.Rider2018.3/system/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/.Rider2018.3/system/resharper-host/local/Transient/ReSharperHost/v183/SolutionCaches/_PrometheusGrafanaPlayGround.526780407.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
-      <e p="AspNetCore.Diagnostics.HealthChecks/src/HealthChecks.Publisher.Prometheus" t="IncludeRecursive">
-        <e p="DependencyInjection" t="Include">
-          <e p="PrometheusGatewayHealthCheckBuilderExtensions.cs" t="Include" />
-        </e>
-        <e p="HealthChecks.Publisher.Prometheus.csproj" t="IncludeRecursive" />
-        <e p="LivenessPrometheusMetrics.cs" t="Include" />
-        <e p="PrometheusGatewayPublisher.cs" t="Include" />
-        <e p="PrometheusResponseWriter.cs" t="Include" />
-        <e p="_Assembly.cs" t="Include" />
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
-            <e p="netstandard2.0" t="Include">
-              <e p="HealthChecks.Publisher.Prometheus.AssemblyInfo.cs" t="Include" />
-            </e>
-          </e>
-        </e>
-      </e>
       <e p="MVCReporter" t="IncludeRecursive">
         <e p="MVCReporter.csproj" t="IncludeRecursive" />
         <e p="Program.cs" t="Include" />
