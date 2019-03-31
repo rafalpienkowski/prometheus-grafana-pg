@@ -3,6 +3,7 @@ using App.Metrics;
 using App.Metrics.AspNetCore;
 using App.Metrics.AspNetCore.Health;
 using App.Metrics.Formatters.Prometheus;
+using App.Metrics.Health.Formatters.Ascii;
 using Microsoft.AspNetCore.Hosting;
 
 namespace SimpleMVC.Metrics.Extensions

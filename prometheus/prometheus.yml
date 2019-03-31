@@ -76,6 +76,11 @@ scrape_configs:
     - targets: ['simple-mvc']
 
 
+  - job_name: 'gateway'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['promgateway:9091']
+
   - job_name: 'blackbox'
     metrics_path: /probe
     params:

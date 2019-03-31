@@ -2,6 +2,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMVC", "SimpleMVC\SimpleMVC.csproj", "{939DE8B7-716B-446A-A654-F48E51335909}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solution.HealthCheck.UI", "Solution.HealthCheck.UI\Solution.HealthCheck.UI.csproj", "{C3C0AA81-EDCF-4AF1-8DBD-49235196E922}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCReporter", "MVCReporter\MVCReporter.csproj", "{2679FF29-3FDE-4D99-95E0-E05D97F157A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthChecks.Publisher.Prometheus", "AspNetCore.Diagnostics.HealthChecks\src\HealthChecks.Publisher.Prometheus\HealthChecks.Publisher.Prometheus.csproj", "{D4178D56-DE2E-45C3-BD2C-F370288F5A8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +18,17 @@ Global
 		{939DE8B7-716B-446A-A654-F48E51335909}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{939DE8B7-716B-446A-A654-F48E51335909}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{939DE8B7-716B-446A-A654-F48E51335909}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3C0AA81-EDCF-4AF1-8DBD-49235196E922}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3C0AA81-EDCF-4AF1-8DBD-49235196E922}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3C0AA81-EDCF-4AF1-8DBD-49235196E922}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3C0AA81-EDCF-4AF1-8DBD-49235196E922}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2679FF29-3FDE-4D99-95E0-E05D97F157A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2679FF29-3FDE-4D99-95E0-E05D97F157A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2679FF29-3FDE-4D99-95E0-E05D97F157A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2679FF29-3FDE-4D99-95E0-E05D97F157A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4178D56-DE2E-45C3-BD2C-F370288F5A8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4178D56-DE2E-45C3-BD2C-F370288F5A8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4178D56-DE2E-45C3-BD2C-F370288F5A8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4178D56-DE2E-45C3-BD2C-F370288F5A8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

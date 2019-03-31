@@ -1,11 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using App.Metrics;
-using App.Metrics.Formatters.Json;
-using App.Metrics.Formatters.Prometheus;
-using App.Metrics.Health;
+﻿using System;
 using App.Metrics.Health.Builder;
+using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -35,8 +32,10 @@ namespace SimpleMVC
                         
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            
-            
+            services.AddHealthChecks()
+                .AddMySql("User ID=root;Password=myPassword;Host=mysql;Port=3306;", "MySql", tags: new[] {"core"})
+                .AddRedis("redis", "redis", tags: new[] {"core"})
+                .AddUrlGroup(new Uri("https://www.wp.pl"), "www.wp.pl", tags: new[] {"dependencies"});
             
             var healthBuilder = new HealthBuilder();
             healthBuilder.HealthChecks.AddCheck(new SampleHealthCheck());
@@ -60,8 +59,14 @@ namespace SimpleMVC
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
-            //app.UseHealthChecks("/health");
+            
+            app.UseHealthChecks("/healthz", new HealthCheckOptions()
+            {
+                Predicate = _ => true,
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
+            
+            app.UseHealthChecks("/health");
 
             app.UseMvc(routes =>
             {

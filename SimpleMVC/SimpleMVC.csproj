@@ -15,7 +15,12 @@
         <PackageReference Include="App.Metrics.AspNetCore.Tracking" Version="3.0.0" />
         <PackageReference Include="App.Metrics.Formatters.Prometheus" Version="3.0.0" />
         <PackageReference Include="App.Metrics.Reporting.InfluxDB" Version="3.0.0" />
+        <PackageReference Include="AspNetCore.HealthChecks.MySql" Version="2.2.0" />
+        <PackageReference Include="AspNetCore.HealthChecks.Redis" Version="2.2.2" />
+        <PackageReference Include="AspNetCore.HealthChecks.Uris" Version="2.2.2" />
+        <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="2.2.3" />
         <PackageReference Include="Microsoft.AspNetCore.App" />
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     </ItemGroup>
 
